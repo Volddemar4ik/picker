@@ -1,20 +1,30 @@
 import { useState } from "react"
 import { defaultColors } from "./default_colors"
+import { ChromePicker } from "react-color"
 
 export default function Modal({ active, setActive, setColor }) {
     const [usedColor, setUsedColor] = useState('#000000')
     const [choosedColor, setChoosedColor] = useState('')
     const [selectedBlock, setSelectedBlock] = useState(null)
 
+    // custom picker
+    const [currenColor, setCurrentColor] = useState('#000')
+    const handleOnChange = color => {
+        setCurrentColor(color)
+        setUsedColor(color.hex)
+        findClosestColors(color.hex)
+    }
+
     const handleBlockClick = (blockId) => {
         setSelectedBlock(blockId)
     }
 
-    const handleSetColor = event => {
-        const selectedColor = event.target.value
-        setUsedColor(selectedColor)
-        findClosestColors(selectedColor)
-    }
+    // standart picker
+    // const handleSetColor = event => {
+    //     const selectedColor = event.target.value
+    //     setUsedColor(selectedColor)
+    //     findClosestColors(selectedColor)
+    // }
 
     // hex to rgb function
     const hexToRGB = hex => {
@@ -90,7 +100,13 @@ export default function Modal({ active, setActive, setColor }) {
                 </div>
 
                 <div className="modul-window__picker">
-                    <input type='color' className='modul-window__picker-window' onChange={handleSetColor} />
+                    {/* <input type='color' className='modul-window__picker-window' onChange={handleSetColor} /> */}
+                    <ChromePicker
+                        color={currenColor}
+                        onChange={handleOnChange}
+                        disableAlpha={true}
+                        className="custom-chrome-picker"
+                    />
                 </div>
 
                 <div className="modul-window__closest-grout-color">

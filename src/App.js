@@ -3,6 +3,7 @@ import './App.css';
 import './style.css'
 import Modal from './modal';
 
+
 function App() {
   const [showModal, setShowModal] = useState(false)
   const [selectColor, setSelectColor] = useState({ name: '', colorNumber: '', RGB: '' })
@@ -27,6 +28,7 @@ function App() {
               <div className="custom-grout-color-block__selected-color-text" id='main-selected-color'>{`${selectColor.colorNumber} ${selectColor.name}`}</div>
             </div>
           </div>
+
         </div>
       </div>
     </React.Fragment>

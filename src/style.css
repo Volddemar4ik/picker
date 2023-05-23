@@ -223,6 +223,21 @@ body {
     color: #FFFFFF;
 }
 
+.modul-window__picker .custom-chrome-picker {
+    width: 100% !important;
+    background: rgb(255, 255, 255) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    box-sizing: initial !important;
+    /* font-family: Menlo; */
+    margin-bottom: 15px;
+}
+
+.flexbox-fix:nth-child(2) {
+    display: none !important;
+}
+
+
 /* media-queries */
 @media (min-width: 768px) {
     .container {
