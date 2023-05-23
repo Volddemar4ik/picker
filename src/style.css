@@ -70,8 +70,6 @@ body {
 }
 
 .title {
-    font-weight: 600;
-    font-size: 1.143em;
     color: #4F5B67;
 }
 
@@ -117,11 +115,8 @@ body {
 .main-block__select-color-item {
     width: 24px;
     height: 24px;
-    /* margin-right: 12px; */
     border: 2px solid #FFFFFF;
     border-radius: 1px;
-    /* background: transparent;
-    border: 1px solid grey; */
 }
 
 .main-block__select-color-item:nth-child(n+2) {
@@ -133,7 +128,6 @@ body {
 }
 
 .custom-grout-color-block__selected-color-text {
-    /* font-size: 1.143em; */
     color: #4F5B67;
     margin-top: 1px;
     margin-bottom: 3px;
@@ -148,9 +142,6 @@ body {
 .custom-grout-color-block__modul-window-show {
     visibility: visible;
     position: absolute;
-    /* top: 35%; */
-    /* left: 50%; */
-    /* transform: translate(-50%, -50%); */
 }
 
 .modul-window {
@@ -223,13 +214,12 @@ body {
     color: #FFFFFF;
 }
 
-.modul-window__picker .custom-chrome-picker {
+.custom-chrome-picker {
     width: 100% !important;
     background: rgb(255, 255, 255) !important;
     border-radius: 0 !important;
     box-shadow: none !important;
     box-sizing: initial !important;
-    /* font-family: Menlo; */
     margin-bottom: 15px;
 }
 
