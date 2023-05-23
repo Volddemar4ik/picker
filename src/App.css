@@ -1,38 +1,129 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'icomoon';
+  src: url('../public/fonts/icomoon.eot?n85fol');
+  src: url('../public/fonts/icomoon.eot?n85fol#iefix') format('embedded-opentype'),
+    url('../public/fonts/icomoon.ttf?n85fol') format('truetype'),
+    url('../public/fonts/icomoon.woff?n85fol') format('woff'),
+    url('../public/fonts/icomoon.svg?n85fol#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.icon-arrow-left2:before {
+  content: "\ea40";
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.icon-add:before {
+  content: "\e900";
+}
+
+.icon-clear:before {
+  content: "\e901";
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'General Sans', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+}
+
+.wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.container {
+  min-width: 264px;
+  padding: 16px 24px;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.main-block {
+  margin-bottom: 24px;
+}
+
+.main-block__title {
+  margin: 0 auto;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.main-block__title_flex-start {
   display: flex;
-  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.main-block__title_flex-between {
+  justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.custom-grout-color-block__add-color-icon {
+  color: #4F5B67;
+  display: flex;
+  align-items: center;
+}
+
+.custom-grout-color-block__add-color-icon>.icon-add {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.custom-grout-color-block__selected-color {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.main-block__select-color-item {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #FFFFFF;
+  border-radius: 1px;
+}
+
+.custom-grout-color-block__selected-color-text {
+  color: #4F5B67;
+  margin-top: 1px;
+  margin-bottom: 3px;
+  margin-left: 8px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
   }
 }

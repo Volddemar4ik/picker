@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './App.css';
-import './style.css'
-import Modal from './modal';
+import Modal from './components/modal';
 
 
 function App() {
