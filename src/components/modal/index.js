@@ -12,6 +12,11 @@ export default function Modal({ active, setActive, setColor }) {
     const newColor01 = useRef(null)
     const newColor02 = useRef(null)
 
+    const colorssss = [
+        { id: 'closest-color-01', ref: newColor01, itemId: 0 },
+        { id: 'closest-color-02', ref: newColor02, itemId: 1 }
+    ]
+
     const handleOnChange = color => {
         setCurrentColor(color)
         setNewColors(сlosestColors(color?.hex))
@@ -26,17 +31,10 @@ export default function Modal({ active, setActive, setColor }) {
         newColor02.current.style.backgroundColor = `rgb(${newColors[1]?.color.RGB})`
     }, [newColors])
 
-    function handleNewColor01() {
+    function handleNewColor(item, selectedBlock) {
         if (newColors) {
-            handleBlockClick('closest-color-01')
-            setChoosedColor(newColors[0].color)
-        }
-    }
-
-    function handleNewColor02() {
-        if (newColors) {
-            handleBlockClick('closest-color-02')
-            setChoosedColor(newColors[1].color)
+            handleBlockClick(selectedBlock)
+            setChoosedColor(newColors[item].color)
         }
     }
 
@@ -69,12 +67,9 @@ export default function Modal({ active, setActive, setColor }) {
                     <div className="modul-window__title title">Matching Grout Colors</div>
 
                     <div className="grout-color-block__select-colors">
-                        <div
-                            className={`${(selectedBlock === 'closest-color-01') && 'main-block__select-color-item_active'} main-block__select-color-item`} ref={newColor01} onClick={handleNewColor01}>
-                        </div>
-                        <div
-                            className={`${(selectedBlock === 'closest-color-02') && 'main-block__select-color-item_active'} main-block__select-color-item`} ref={newColor02} onClick={handleNewColor02}>
-                        </div>
+                        {colorssss.map(item => (<div
+                            className={`${(selectedBlock === item.id) && 'main-block__select-color-item_active'} main-block__select-color-item`} ref={item.ref} onClick={() => handleNewColor(item.itemId, item.id)} key={item.id}>
+                        </div>))}
                     </div>
                 </div>
 
