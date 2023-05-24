@@ -8,7 +8,7 @@ export default function Modal({ active, setActive, setColor }) {
     const [choosedColor, setChoosedColor] = useState('')
     const [selectedBlock, setSelectedBlock] = useState(null)
     const [currenColor, setCurrentColor] = useState('#000000')
-    const [newColors, setNewColors] = useState('')
+    const [newColors, setNewColors] = useState([])
 
     const colors = [
         { id: 'closest-color-01', itemId: 0, bgColor: newColors[0]?.color?.RGB },
@@ -60,9 +60,10 @@ export default function Modal({ active, setActive, setColor }) {
                     <div className="modul-window__title title">Matching Grout Colors</div>
 
                     <div className="grout-color-block__select-colors">
-                        {colors?.map(item => (<div
-                            className={`${(selectedBlock === item.id) && 'main-block__select-color-item_active'} main-block__select-color-item`} onClick={() => handleNewColor(item.itemId, item.id)} key={item.id} style={{ backgroundColor: `rgb(${item.bgColor})` }}>
-                        </div>))}
+                        {colors?.map(item => (
+                            <div className={`${(selectedBlock === item.id) && 'main-block__select-color-item_active'} main-block__select-color-item`} onClick={() => handleNewColor(item.itemId, item.id)} key={item.id} style={{ backgroundColor: `rgb(${item.bgColor})` }}>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
