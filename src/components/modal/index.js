@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react"
+import { useState } from "react"
 import { ChromePicker } from "react-color"
 import { сlosestColors } from "../functions"
 import './style.css'
@@ -9,12 +9,10 @@ export default function Modal({ active, setActive, setColor }) {
     const [selectedBlock, setSelectedBlock] = useState(null)
     const [currenColor, setCurrentColor] = useState('#000000')
     const [newColors, setNewColors] = useState('')
-    const newColor01 = useRef(null)
-    const newColor02 = useRef(null)
 
-    const colorssss = [
-        { id: 'closest-color-01', ref: newColor01, itemId: 0 },
-        { id: 'closest-color-02', ref: newColor02, itemId: 1 }
+    const colors = [
+        { id: 'closest-color-01', itemId: 0, bgColor: newColors[0]?.color?.RGB },
+        { id: 'closest-color-02', itemId: 1, bgColor: newColors[1]?.color?.RGB }
     ]
 
     const handleOnChange = color => {
@@ -25,11 +23,6 @@ export default function Modal({ active, setActive, setColor }) {
     const handleBlockClick = blockId => {
         setSelectedBlock(blockId)
     }
-
-    useEffect(() => {
-        newColor01.current.style.backgroundColor = `rgb(${newColors[0]?.color.RGB})`
-        newColor02.current.style.backgroundColor = `rgb(${newColors[1]?.color.RGB})`
-    }, [newColors])
 
     function handleNewColor(item, selectedBlock) {
         if (newColors) {
@@ -67,8 +60,8 @@ export default function Modal({ active, setActive, setColor }) {
                     <div className="modul-window__title title">Matching Grout Colors</div>
 
                     <div className="grout-color-block__select-colors">
-                        {colorssss.map(item => (<div
-                            className={`${(selectedBlock === item.id) && 'main-block__select-color-item_active'} main-block__select-color-item`} ref={item.ref} onClick={() => handleNewColor(item.itemId, item.id)} key={item.id}>
+                        {colors?.map(item => (<div
+                            className={`${(selectedBlock === item.id) && 'main-block__select-color-item_active'} main-block__select-color-item`} onClick={() => handleNewColor(item.itemId, item.id)} key={item.id} style={{ backgroundColor: `rgb(${item.bgColor})` }}>
                         </div>))}
                     </div>
                 </div>
