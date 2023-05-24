@@ -1,50 +1,42 @@
-import { useState } from "react"
-import { defaultColors } from "./default_colors"
+import { useState, useRef, useEffect } from "react"
 import { ChromePicker } from "react-color"
-import { colorDistance, hexToRGB } from "../functions"
+import { сlosestColors } from "../functions"
 import './style.css'
+
 
 export default function Modal({ active, setActive, setColor }) {
     const [choosedColor, setChoosedColor] = useState('')
     const [selectedBlock, setSelectedBlock] = useState(null)
-
     const [currenColor, setCurrentColor] = useState('#000000')
+    const [newColors, setNewColors] = useState('')
+    const newColor01 = useRef(null)
+    const newColor02 = useRef(null)
+
     const handleOnChange = color => {
         setCurrentColor(color)
-        сlosestColors(color.hex)
+        setNewColors(сlosestColors(color?.hex))
     }
 
-    const handleBlockClick = (blockId) => {
+    const handleBlockClick = blockId => {
         setSelectedBlock(blockId)
     }
 
-    const сlosestColors = color => {
-        const selectedColorRGB = hexToRGB(color)
+    useEffect(() => {
+        newColor01.current.style.backgroundColor = `rgb(${newColors[0]?.color.RGB})`
+        newColor02.current.style.backgroundColor = `rgb(${newColors[1]?.color.RGB})`
+    }, [newColors])
 
-        const closestColors = defaultColors
-            .map((colorObj) => ({
-                color: colorObj,
-                distance: colorDistance(colorObj.RGB, selectedColorRGB),
-            }))
-            .sort((a, b) => a.distance - b.distance)
-            .slice(0, 2)
-
-        const closestColor01 = document.getElementById('closest-color-01')
-        if (closestColor01) {
-            closestColor01.style.backgroundColor = `rgb(${closestColors[0].color.RGB})`
-            closestColor01.addEventListener('click', function () {
-                handleBlockClick('closest-color-01')
-                setChoosedColor(closestColors[0].color)
-            })
+    function handleNewColor01() {
+        if (newColors) {
+            handleBlockClick('closest-color-01')
+            setChoosedColor(newColors[0].color)
         }
+    }
 
-        const closestColor02 = document.getElementById('closest-color-02')
-        if (closestColor02) {
-            closestColor02.style.backgroundColor = `rgb(${closestColors[1].color.RGB})`
-            closestColor02.addEventListener('click', function () {
-                handleBlockClick('closest-color-02')
-                setChoosedColor(closestColors[1].color)
-            })
+    function handleNewColor02() {
+        if (newColors) {
+            handleBlockClick('closest-color-02')
+            setChoosedColor(newColors[1].color)
         }
     }
 
@@ -78,10 +70,10 @@ export default function Modal({ active, setActive, setColor }) {
 
                     <div className="grout-color-block__select-colors">
                         <div
-                            className={`${(selectedBlock === 'closest-color-01') && 'main-block__select-color-item_active'} main-block__select-color-item`} id="closest-color-01">
+                            className={`${(selectedBlock === 'closest-color-01') && 'main-block__select-color-item_active'} main-block__select-color-item`} ref={newColor01} onClick={handleNewColor01}>
                         </div>
                         <div
-                            className={`${(selectedBlock === 'closest-color-02') && 'main-block__select-color-item_active'} main-block__select-color-item`} id="closest-color-02">
+                            className={`${(selectedBlock === 'closest-color-02') && 'main-block__select-color-item_active'} main-block__select-color-item`} ref={newColor02} onClick={handleNewColor02}>
                         </div>
                     </div>
                 </div>

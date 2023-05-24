@@ -1,3 +1,5 @@
+import { defaultColors } from "../modal/default_colors"
+
 
 export const hexToRGB = hex => {
     const shortHexRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i
@@ -15,9 +17,23 @@ export const hexToRGB = hex => {
 
 export const colorDistance = (color1, color2) => {
     const components = color1.split(',')
-    const deltaR = parseInt(components[0]) - color2.r
-    const deltaG = parseInt(components[1]) - color2.g
-    const deltaB = parseInt(components[2]) - color2.b
+    const deltaR = parseInt(components[0]) - color2?.r
+    const deltaG = parseInt(components[1]) - color2?.g
+    const deltaB = parseInt(components[2]) - color2?.b
 
     return Math.sqrt(deltaR * deltaR + deltaG * deltaG + deltaB * deltaB)
+}
+
+export const сlosestColors = color => {
+    const selectedColorRGB = hexToRGB(color)
+
+    const closestColors = defaultColors
+        .map((colorObj) => ({
+            color: colorObj,
+            distance: colorDistance(colorObj.RGB, selectedColorRGB),
+        }))
+        .sort((a, b) => a.distance - b.distance)
+        .slice(0, 2)
+
+    return closestColors
 }
