@@ -112,7 +112,11 @@
 } */
 
 .modal-window {
+    width: 264px;
     position: absolute;
+    right: -261px;
+    /* top: -100px; */
+    /*тут оставить, это нужно для макета*/
     background: #FFFFFF;
     border: 0.5px solid rgba(234, 236, 238, 0.5);
     box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
@@ -129,10 +133,10 @@
     margin-bottom: 24px;
 }
 
-.modal-window__palitra {
+/* .modal-window__palitra {
     height: 100px;
     background-color: red;
-}
+} */
 
 .modal-window__matching-block {
     padding: 0 24px 12px;
@@ -142,10 +146,11 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
+    margin-bottom: 16px;
 }
 
 .modal-window__title {
-    margin-bottom: 16px;
+    /* margin-bottom: 16px; */
 }
 
 .modal-window__info {
@@ -211,4 +216,30 @@
 .modal-window__button {
     box-sizing: border-box;
     width: 100%;
+}
+
+
+
+
+/* это потом удалить */
+.custom-chrome-picker {
+    width: 100% !important;
+    background: rgb(255, 255, 255) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    box-sizing: initial !important;
+    margin-bottom: 15px;
+}
+
+.custom-chrome-picker {
+    width: 100% !important;
+    background: rgb(255, 255, 255) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    box-sizing: initial !important;
+    margin-bottom: 15px;
+}
+
+.flexbox-fix:nth-child(2) {
+    display: none !important;
 }

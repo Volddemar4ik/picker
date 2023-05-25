@@ -83,20 +83,39 @@
 //         </div>
 //     )
 // }
-import React, { useContext } from 'react'
+
+
+import React, { useContext, useEffect, useState } from 'react'
+import { ChromePicker } from "react-color"
 import { ModalWindow } from '../../App'
+import { сlosestColors } from "../functions/closest_colors"
 import './style.css'
 
 export default function Modal() {
-    const handleMOdalWindow = useContext(ModalWindow)
+    const [handleModalWindow, choosedColorFromPicker] = useContext(ModalWindow)
+    const [pickerColor, setPickerColor] = useState('#FFFFFF')
+    const [newClosestColors, setNewClosestColors] = useState([])
+    const [choosedColor, setChoosedColor] = useState(undefined)
 
-    function closeModalWindow() {
-        handleMOdalWindow(false)
+    // отслеживаем изменение цвета picker
+    useEffect(() => {
+        setNewClosestColors(сlosestColors(7, pickerColor?.hex))
+    }, [pickerColor])
+
+    // клик на предлагаемый цвет из 7 цветов
+    function chooseNewColor(color) {
+        setChoosedColor(color)
     }
 
+    // закрытие модального окна
+    function closeModalWindow() {
+        handleModalWindow(false)
+    }
+
+    // нажажатие на копку apply
     function applyColor() {
-        // тут что то делаем с цветом
-        handleMOdalWindow(false)
+        choosedColorFromPicker(choosedColor)
+        handleModalWindow(false)
     }
 
     return (
@@ -107,7 +126,18 @@ export default function Modal() {
                         <i className='icon-close_modal icon'></i>
                     </button>
                 </div>
-                <div className='modal-window__palitra'></div>
+
+                <div className='modal-window__palitra'>
+                    <div className="modul-window__picker">
+                        <ChromePicker
+                            color={pickerColor}
+                            onChange={color => setPickerColor(color)}
+                            disableAlpha={true}
+                            className="custom-chrome-picker"
+                        />
+                    </div>
+                </div>
+
                 <div className='modal-window__matching-block'>
                     <div className='modal-window__matching-block-title'>
                         <div className='modal-window__title title'>Matching Grout Colors</div>
@@ -121,13 +151,14 @@ export default function Modal() {
                     </div>
 
                     <div className='modal-window__matching-colors'>
-                        <div className='grout-color__user-palitra-block grout-color__user-palitra-block_active' />
-                        <div className='grout-color__user-palitra-block' />
-                        <div className='grout-color__user-palitra-block' />
-                        <div className='grout-color__user-palitra-block' />
-                        <div className='grout-color__user-palitra-block' />
-                        <div className='grout-color__user-palitra-block' />
-                        <div className='grout-color__user-palitra-block' />
+                        {newClosestColors?.map(item => (
+                            <div
+                                className={`grout-color__user-palitra-block ${(choosedColor?.RGB === item?.color?.RGB) && 'grout-color__user-palitra-block_active'}`}
+                                style={{ backgroundColor: `rgb(${item?.color?.RGB})` }}
+                                key={item?.color?.colorNumber}
+                                onClick={() => { chooseNewColor(item?.color) }}
+                            />
+                        ))}
                     </div>
 
                     <button className='modal-window__button button button_active' onClick={applyColor}>Apply</button>

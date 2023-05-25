@@ -24,7 +24,7 @@ export const colorDistance = (color1, color2) => {
     return Math.sqrt(deltaR * deltaR + deltaG * deltaG + deltaB * deltaB)
 }
 
-export const сlosestColors = color => {
+export const сlosestColors = (count, color) => {
     const selectedColorRGB = hexToRGB(color)
 
     const closestColors = defaultColors
@@ -33,7 +33,7 @@ export const сlosestColors = color => {
             distance: colorDistance(colorObj.RGB, selectedColorRGB),
         }))
         .sort((a, b) => a.distance - b.distance)
-        .slice(0, 7)
+        .slice(0, count)
 
     return closestColors
 }
