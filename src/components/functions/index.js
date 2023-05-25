@@ -33,7 +33,7 @@ export const сlosestColors = color => {
             distance: colorDistance(colorObj.RGB, selectedColorRGB),
         }))
         .sort((a, b) => a.distance - b.distance)
-        .slice(0, 2)
+        .slice(0, 7)
 
     return closestColors
 }

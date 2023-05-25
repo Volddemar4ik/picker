@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: 'icomoon';
   src: url('../public/fonts/icomoon.eot?n85fol');
   src: url('../public/fonts/icomoon.eot?n85fol#iefix') format('embedded-opentype'),
@@ -12,7 +12,7 @@
 
 [class^="icon-"],
 [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
+  use !important to prevent issues with browser extensions that change fonts
   font-family: 'icomoon' !important;
   speak: never;
   font-style: normal;
@@ -21,7 +21,7 @@
   text-transform: none;
   line-height: 1;
 
-  /* Better Font Rendering =========== */
+  Better Font Rendering ===========
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -126,4 +126,111 @@ body {
   .container {
     max-width: 768px;
   }
+} */
+
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'General Sans', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+}
+
+.container {
+  max-width: 264px;
+  /* background: rgb(245, 241, 241); */
+}
+
+.title {
+  text-align: left;
+  color: #4F5B67;
+}
+
+.grout-color {
+  position: relative;
+  padding: 24px;
+}
+
+.grout-color__title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.grout-color__user-palitra {
+  width: 100%;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+.grout-color__user-palitra-block {
+  width: 20px;
+  height: 20px;
+  border-radius: 1px;
+  background-color: green;
+  flex-shrink: 0;
+}
+
+.grout-color__user-palitra .grout-color__user-palitra-block:nth-child(n+2) {
+  margin-left: 12px;
+}
+
+.grout-color__user-palitra-block_active {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.grout-color__user-palitra-block_active::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: -2px;
+  right: -2px;
+  border: 2px solid #94CEA3;
+  border-radius: 1px;
+}
+
+.grout-color__user-custom-color-block {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.grout-color__user-selected-color-name {
+  flex-grow: 1;
+  margin-left: 8px;
+}
+
+.grout-color__open-modal-window {
+  margin-right: 2px;
+}
+
+.icon-button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.icon {
+  color: #4F5B67;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
 }

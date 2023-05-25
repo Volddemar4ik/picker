@@ -1,4 +1,4 @@
-.main-block__select-color-item {
+/* .main-block__select-color-item {
     width: 24px;
     height: 24px;
     border: 2px solid #FFFFFF;
@@ -109,4 +109,106 @@
     .container {
         max-width: 768px;
     }
+} */
+
+.modal-window {
+    position: absolute;
+    background: #FFFFFF;
+    border: 0.5px solid rgba(234, 236, 238, 0.5);
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+}
+
+.modal-window__header {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10.51px;
+}
+
+.modal-window__palitra {
+    margin-bottom: 24px;
+}
+
+.modal-window__palitra {
+    height: 100px;
+    background-color: red;
+}
+
+.modal-window__matching-block {
+    padding: 0 24px 12px;
+}
+
+.modal-window__matching-block-title {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.modal-window__title {
+    margin-bottom: 16px;
+}
+
+.modal-window__info {
+    position: relative;
+}
+
+.modal-window__info-icon {
+    color: #A8B0B9;
+    font-size: 11.38px;
+}
+
+.modal-windows__info-title {
+    position: absolute;
+    top: -50px;
+    left: 5px;
+    display: none;
+    min-width: 114px;
+    padding: 10px;
+    background: #FFFFFF;
+    border: 1px solid #EAECEE;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 4px 4px 4px 0px;
+    text-align: center;
+}
+
+.modal-windows__info-title-text {
+    width: 100%;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.0285em;
+    color: #4F5B67;
+}
+
+.modal-window__info-icon:hover+.modal-windows__info-title {
+    display: block;
+}
+
+.modal-window__matching-colors {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.modal-window__matching-colors .grout-color__user-palitra-block:nth-child(n+2) {
+    margin-left: 12px;
+}
+
+.button {
+    padding: 13px 20px;
+    text-align: center;
+    border-radius: 4px;
+    border: none;
+}
+
+.button_active {
+    background: #4CAD66;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.modal-window__button {
+    box-sizing: border-box;
+    width: 100%;
 }
