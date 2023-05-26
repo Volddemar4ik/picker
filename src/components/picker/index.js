@@ -20,7 +20,6 @@ const CustomPointer = (pointerColor) => {
 const CustomColorPicker = (props) => {
     const [hsl, setHSL] = useState({ h: 0, s: 0, l: 0 })
     const [hsv, setHSV] = useState({ h: 0, s: 0, v: 0 })
-    console.log('props', props)
 
     useEffect(() => {
         const color = tinycolor(props.hexCode)
@@ -30,9 +29,6 @@ const CustomColorPicker = (props) => {
 
     const handleHueChange = (hue) => {
         setHSL(hue)
-
-        // const color = tinycolor(hsv)
-        // console.log('color', color)
     }
 
     const handleSaturationChange = (hsv) => {

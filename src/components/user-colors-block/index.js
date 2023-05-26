@@ -27,7 +27,7 @@ function UserColors({ array, setColor }) {
                 <div
                     className={`grout-color__user-palitra-block ${(item?.RGB === choosedColor) && 'grout-color__user-palitra-block_active'}`}
                     style={{ backgroundColor: `rgb(${item?.RGB})` }}
-                    key={item?.RGB}
+                    key={item?.colorNumber}
                     onClick={() => clickOnActiveBlock(item)}
                 />
             ))}

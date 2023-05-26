@@ -1,11 +1,9 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Modal from './components/modal';
 import UserColors from './components/user-colors-block';
 import { getRandomElements } from './functions/random_elements';
 import { defaultColors } from './components/modal/default-colors';
 import './App.css';
-
-export const ModalWindow = createContext()
 
 function App() {
   const [handleModalWindow, setHandleModalWindow] = useState(false)
@@ -52,9 +50,8 @@ function App() {
         </div>
 
         {handleModalWindow &&
-          <ModalWindow.Provider value={[setHandleModalWindow, setChoosedColorFromPicker]}>
-            <Modal />
-          </ModalWindow.Provider>}
+          <Modal close={() => setHandleModalWindow(false)} change={setChoosedColorFromPicker} />
+        }
       </div>
     </div>
   )

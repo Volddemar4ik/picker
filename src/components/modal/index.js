@@ -1,36 +1,29 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CustomColorPicker from '../picker'
-import { ModalWindow } from '../../App'
 import UserColors from '../user-colors-block'
 import { сlosestColors } from "../../functions/closest_colors"
 import { defaultColors } from './default-colors'
 import './style.css'
 
-export default function Modal() {
-    const [handleModalWindow, choosedColorFromPicker] = useContext(ModalWindow)
+export default function Modal({ close, change }) {
     const [pickerColor, setPickerColor] = useState('#000000')
     const [newClosestColors, setNewClosestColors] = useState([])
     const [choosedColor, setChoosedColor] = useState(undefined)
-    console.log('pickerColor', pickerColor)
 
     useEffect(() => {
         setNewClosestColors(сlosestColors(defaultColors, 7, pickerColor?.hex))
     }, [pickerColor])
 
-    function closeModalWindow() {
-        handleModalWindow(false)
-    }
-
     function applyColor() {
-        choosedColorFromPicker(choosedColor)
-        handleModalWindow(false)
+        change(choosedColor)
+        close()
     }
 
     return (
         <div className='container'>
             <div className='modal-window'>
                 <div className='modal-window__header'>
-                    <button className='modal-window__button-close-modal-window icon-button' onClick={closeModalWindow}>
+                    <button className='modal-window__button-close-modal-window icon-button' onClick={close}>
                         <i className='icon-close_modal icon'></i>
                     </button>
                 </div>
@@ -40,8 +33,6 @@ export default function Modal() {
                         color={pickerColor}
                         onChange={color => setPickerColor(color)}
                     />
-
-
                 </div>
 
                 <div className='modal-window__matching-block'>
