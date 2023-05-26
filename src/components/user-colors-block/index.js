@@ -23,11 +23,11 @@ function UserColors({ array, setColor }) {
 
     return (
         <>
-            {newArray?.map(item => (
+            {newArray?.map((item, index) => (
                 <div
                     className={`grout-color__user-palitra-block ${(item?.RGB === choosedColor) && 'grout-color__user-palitra-block_active'}`}
                     style={{ backgroundColor: `rgb(${item?.RGB})` }}
-                    key={item?.colorNumber}
+                    key={index}
                     onClick={() => clickOnActiveBlock(item)}
                 />
             ))}
