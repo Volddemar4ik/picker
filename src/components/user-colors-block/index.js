@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function UserColors({ array, setColor }) {
     const [choosedColor, setChoosedColor] = useState(undefined)
+    const [coosedColorIndex, setChoosedColorIndex] = useState(null)
 
     let newArray = []
     if (array[0]?.color) {
@@ -12,12 +13,14 @@ function UserColors({ array, setColor }) {
         newArray = [...array]
     }
 
-    function clickOnActiveBlock(item) {
+    function clickOnActiveBlock(itemBlock) {
+        setChoosedColorIndex(itemBlock?.index)
+
         if (setColor) {
-            setChoosedColor(item?.RGB)
-            setColor(item)
+            setChoosedColor(itemBlock?.item?.RGB)
+            setColor(itemBlock?.item)
         } else {
-            setChoosedColor(item?.RGB)
+            setChoosedColor(itemBlock?.item?.RGB)
         }
     }
 
@@ -25,10 +28,10 @@ function UserColors({ array, setColor }) {
         <>
             {newArray?.map((item, index) => (
                 <div
-                    className={`grout-color__user-palitra-block ${(item?.RGB === choosedColor) && 'grout-color__user-palitra-block_active'}`}
+                    className={`grout-color__user-palitra-block ${((index === coosedColorIndex) && (item?.RGB === choosedColor)) && 'grout-color__user-palitra-block_active'}`}
                     style={{ backgroundColor: `rgb(${item?.RGB})` }}
                     key={index}
-                    onClick={() => clickOnActiveBlock(item)}
+                    onClick={() => clickOnActiveBlock({ item, index })}
                 />
             ))}
         </>
