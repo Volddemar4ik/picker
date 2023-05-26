@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 
 function UserColors({ array, setColor }) {
     const [choosedColor, setChoosedColor] = useState(undefined)
