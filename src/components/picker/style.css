@@ -1,0 +1,56 @@
+.custom-picker__saturation-block {
+    width: 264px;
+    height: 137px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.custom-picker__hue-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 24px;
+}
+
+.custom-picker__hue-block-button .icon {
+    color: #A8B0B9;
+}
+
+.custom-picker__hue-block-hue {
+    width: 188px;
+    height: 10px;
+    position: relative;
+}
+
+.custom-picker__hue-block-hue::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    bottom: -5px;
+    left: -5px;
+    border: 5px solid #FFFFFF;
+    border-radius: 10px;
+}
+
+.slider-ring {
+    width: 12px;
+    height: 12px;
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    position: relative;
+    z-index: 10;
+    top: -3px;
+    left: -8px;
+}
+
+.pointer-ring {
+    width: 10px;
+    height: 10px;
+    border: 3px solid #FFFFFF;
+    border-radius: 50%;
+    position: relative;
+    top: -8px;
+    left: -8px;
+}

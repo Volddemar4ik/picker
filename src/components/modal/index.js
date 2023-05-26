@@ -8,9 +8,10 @@ import './style.css'
 
 export default function Modal() {
     const [handleModalWindow, choosedColorFromPicker] = useContext(ModalWindow)
-    const [pickerColor, setPickerColor] = useState('#FFFFFF')
+    const [pickerColor, setPickerColor] = useState('#000000')
     const [newClosestColors, setNewClosestColors] = useState([])
     const [choosedColor, setChoosedColor] = useState(undefined)
+    console.log('pickerColor', pickerColor)
 
     useEffect(() => {
         setNewClosestColors(сlosestColors(defaultColors, 7, pickerColor?.hex))
