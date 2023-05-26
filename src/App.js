@@ -1,8 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react'
 import Modal from './components/modal';
-import UserColors from './components/user_colors_block';
-import { getRandomElements } from './components/functions/random_elements';
-import { defaultColors } from './components/modal/default_colors';
+import UserColors from './components/user-colors-block';
+import { getRandomElements } from './functions/random_elements';
+import { defaultColors } from './components/modal/default-colors';
 import './App.css';
 
 export const ModalWindow = createContext()
@@ -11,14 +11,14 @@ function App() {
   const [handleModalWindow, setHandleModalWindow] = useState(false)
   const [choosedColorFromPicker, setChoosedColorFromPicker] = useState(undefined)
   const [userColors, setUserColors] = useState(getRandomElements(7, defaultColors))
+  const amountOfClosestColors = 7
 
-  // пушим новый цвет в массив цветов и удаляем последний
   useEffect(() => {
     const newColorsArray = [...userColors]
 
     if (choosedColorFromPicker) {
       newColorsArray.unshift(choosedColorFromPicker)
-      if (newColorsArray.length > 7) {
+      if (newColorsArray.length > amountOfClosestColors) {
         newColorsArray.pop()
       }
     }
@@ -26,9 +26,8 @@ function App() {
     setUserColors(newColorsArray)
   }, [choosedColorFromPicker])
 
-  // открытие модального окна
   function openModalWindow(e) {
-    e.preventDefault() // не даем браузеру перезагружаться при нажатии на кнопку
+    e.preventDefault()
     setHandleModalWindow(true)
   }
 

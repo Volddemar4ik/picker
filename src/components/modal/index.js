@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { ChromePicker } from "react-color"
+import CustomColorPicker from '../picker'
 import { ModalWindow } from '../../App'
-import UserColors from '../user_colors_block'
-import { сlosestColors } from "../functions/closest_colors"
-import { defaultColors } from './default_colors'
+import UserColors from '../user-colors-block'
+import { сlosestColors } from "../../functions/closest_colors"
+import { defaultColors } from './default-colors'
 import './style.css'
 
 export default function Modal() {
@@ -12,17 +12,14 @@ export default function Modal() {
     const [newClosestColors, setNewClosestColors] = useState([])
     const [choosedColor, setChoosedColor] = useState(undefined)
 
-    // отслеживаем изменение цвета picker
     useEffect(() => {
         setNewClosestColors(сlosestColors(defaultColors, 7, pickerColor?.hex))
     }, [pickerColor])
 
-    // закрытие модального окна
     function closeModalWindow() {
         handleModalWindow(false)
     }
 
-    // нажажатие на копку apply
     function applyColor() {
         choosedColorFromPicker(choosedColor)
         handleModalWindow(false)
@@ -38,14 +35,12 @@ export default function Modal() {
                 </div>
 
                 <div className='modal-window__palitra'>
-                    <div className="modul-window__picker">
-                        <ChromePicker
-                            color={pickerColor}
-                            onChange={color => setPickerColor(color)}
-                            disableAlpha={true}
-                            className="custom-chrome-picker"
-                        />
-                    </div>
+                    <CustomColorPicker
+                        color={pickerColor}
+                        onChange={color => setPickerColor(color)}
+                    />
+
+
                 </div>
 
                 <div className='modal-window__matching-block'>
