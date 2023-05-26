@@ -13,8 +13,9 @@
     margin: 0 24px;
 }
 
-.custom-picker__hue-block-button .icon {
+.custom-picker__hue-block-pipette .icon {
     color: #A8B0B9;
+    cursor: auto;
 }
 
 .custom-picker__hue-block-hue {
@@ -40,7 +41,7 @@
     border: 2px solid #FFFFFF;
     border-radius: 50%;
     position: relative;
-    z-index: 10;
+    z-index: 1;
     top: -3px;
     left: -8px;
 }

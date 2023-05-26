@@ -22,10 +22,10 @@ const CustomColorPicker = (props) => {
     const [hsv, setHSV] = useState({ h: 0, s: 0, v: 0 })
 
     useEffect(() => {
-        const color = tinycolor(props.hexCode)
+        const color = tinycolor(props.hex)
         setHSV(color.toHsv())
         setHSL(color.toHsl())
-    }, [props.hexCode])
+    }, [props.hex])
 
     const handleHueChange = (hue) => {
         setHSL(hue)
@@ -50,9 +50,7 @@ const CustomColorPicker = (props) => {
 
             <div className='custom-picker__hue-block'>
                 <div className='custom-picker__hue-block-pipette' >
-                    <button className='custom-picker__hue-block-button icon-button'>
-                        <i className='icon-pipette icon'></i>
-                    </button>
+                    <i className='icon-pipette icon'></i>
                 </div>
 
                 <div className='custom-picker__hue-block-hue'>
