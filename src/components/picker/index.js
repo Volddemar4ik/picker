@@ -29,6 +29,8 @@ const CustomColorPicker = (props) => {
 
     const handleHueChange = (hue) => {
         setHSL(hue)
+        const color = tinycolor(hue)
+        props.onChange(color.toHex())
     }
 
     const handleSaturationChange = (hsv) => {
