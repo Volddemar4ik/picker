@@ -8,8 +8,9 @@ import './App.css';
 function App() {
   const [handleModalWindow, setHandleModalWindow] = useState(false)
   const [choosedColorFromPicker, setChoosedColorFromPicker] = useState(undefined)
-  const [userColors, setUserColors] = useState(getRandomElements(7, defaultColors))
   const amountOfClosestColors = 7
+  const [userColors, setUserColors] = useState(getRandomElements(amountOfClosestColors, defaultColors))
+
 
   useEffect(() => {
     const newColorsArray = [...userColors]

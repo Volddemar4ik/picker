@@ -9,9 +9,11 @@ export default function Modal({ close, change }) {
     const [pickerColor, setPickerColor] = useState('#000000')
     const [newClosestColors, setNewClosestColors] = useState([])
     const [choosedColor, setChoosedColor] = useState(undefined)
+    const amountClosestColors = 7
 
     useEffect(() => {
-        setNewClosestColors(сlosestColors(defaultColors, 7, pickerColor?.hex))
+        let currentColor = pickerColor?.hex || pickerColor
+        setNewClosestColors(сlosestColors(defaultColors, amountClosestColors, currentColor))
     }, [pickerColor])
 
     function applyColor() {

@@ -5,13 +5,13 @@ import './style.css'
 
 const { Saturation, Hue } = require('react-color/lib/components/common')
 
-const CustomSlider = (sliderColor) => {
+const CustomSlider = sliderColor => {
     return (
         <div className='slider-ring' style={{ background: sliderColor.hex }} />
     )
 }
 
-const CustomPointer = (pointerColor) => {
+const CustomPointer = pointerColor => {
     return (
         <div className='pointer-ring' style={{ background: pointerColor.hex }} />
     )
