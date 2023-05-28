@@ -11,6 +11,7 @@ const CustomSlider = sliderColor => {
     )
 }
 
+
 const CustomPointer = pointerColor => {
     return (
         <div className='pointer-ring' style={{ background: pointerColor.hex }} />

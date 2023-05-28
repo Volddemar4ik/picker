@@ -24,14 +24,7 @@
     position: relative;
 }
 
-.custom-picker__hue-block-hue::after {
-    content: "";
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    bottom: -5px;
-    left: -5px;
-    border: 5px solid #FFFFFF;
+.hue-horizontal {
     border-radius: 10px;
 }
 
@@ -40,7 +33,7 @@
     height: 12px;
     border: 2px solid #FFFFFF;
     border-radius: 50%;
-    position: relative;
+    position: absolute;
     z-index: 1;
     top: -3px;
     left: -8px;
@@ -51,7 +44,7 @@
     height: 10px;
     border: 3px solid #FFFFFF;
     border-radius: 50%;
-    position: relative;
+    position: absolute;
     top: -8px;
     left: -8px;
 }
