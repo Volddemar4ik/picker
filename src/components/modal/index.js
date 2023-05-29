@@ -5,8 +5,6 @@ import { сlosestColors } from "../../functions/closest_colors"
 import { defaultColors } from './default-colors'
 import './style.css'
 
-import { ChromePicker } from 'react-color'
-
 export default function Modal({ close, change }) {
     const [pickerColor, setPickerColor] = useState('#000000')
     const [newClosestColors, setNewClosestColors] = useState([])
