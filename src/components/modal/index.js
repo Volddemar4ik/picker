@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CustomColorPicker from '../picker'
-import UserColors from '../user-colors-block'
+import UserColorsBlock from '../colors-block'
 import { сlosestColors } from "../../functions/closest_colors"
 import { defaultColors } from './default-colors'
 import './style.css'
@@ -8,7 +8,7 @@ import './style.css'
 export default function Modal({ close, change }) {
     const [pickerColor, setPickerColor] = useState('#000000')
     const [newClosestColors, setNewClosestColors] = useState([])
-    const [choosedColor, setChoosedColor] = useState(undefined)
+    const [choosedColor, setChoosedColor] = useState({ key: null, color: {} })
     const amountClosestColors = 7
 
     useEffect(() => {
@@ -17,7 +17,7 @@ export default function Modal({ close, change }) {
     }, [pickerColor])
 
     function applyColor() {
-        change(choosedColor)
+        change(choosedColor?.color)
         close()
     }
 
@@ -50,7 +50,15 @@ export default function Modal({ close, change }) {
                     </div>
 
                     <div className='modal-window__matching-colors'>
-                        <UserColors array={newClosestColors} setColor={setChoosedColor} />
+                        {newClosestColors?.map((item, index) => (
+                            <UserColorsBlock
+                                key={index}
+                                color={item?.color}
+                                choosedColor={choosedColor}
+                                setChoosedColor={setChoosedColor}
+                                keyIndex={index}
+                            />
+                        ))}
                     </div>
 
                     <button className='modal-window__button button button_active' onClick={applyColor}>Apply</button>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Modal from './components/modal';
-import UserColors from './components/user-colors-block';
+import UserColorsBlock from './components/colors-block';
 import { getRandomElements } from './functions/random_elements';
 import { defaultColors } from './components/modal/default-colors';
 import './App.css';
@@ -9,11 +9,11 @@ function App() {
   const [handleModalWindow, setHandleModalWindow] = useState(false)
   const [choosedColorFromPicker, setChoosedColorFromPicker] = useState(undefined)
   const amountOfClosestColors = 7
-  const [userColors, setUserColors] = useState(getRandomElements(amountOfClosestColors, defaultColors))
-
+  const [randomColors, setRandomColors] = useState(getRandomElements(amountOfClosestColors, defaultColors))
+  const [choosedUserColor, setChoosedUserColor] = useState({ key: null, color: {} })
 
   useEffect(() => {
-    const newColorsArray = [...userColors]
+    const newColorsArray = [...randomColors]
 
     if (choosedColorFromPicker) {
       newColorsArray.unshift(choosedColorFromPicker)
@@ -22,7 +22,7 @@ function App() {
       }
     }
 
-    setUserColors(newColorsArray)
+    setRandomColors(newColorsArray)
   }, [choosedColorFromPicker])
 
   function openModalWindow(e) {
@@ -37,12 +37,20 @@ function App() {
           Grout Color
         </div>
         <div className='grout-color__user-palitra'>
-          <UserColors array={userColors} />
+          {randomColors.map((item, index) => (
+            <UserColorsBlock
+              color={item}
+              key={index}
+              choosedColor={choosedUserColor}
+              setChoosedColor={setChoosedUserColor}
+              keyIndex={index}
+            />
+          ))}
         </div>
 
         <div className='grout-color__user-custom-color-block'>
-          <div className='grout-color__user-palitra-block' style={{ backgroundColor: `rgb(${userColors[0]?.RGB})` }} />
-          <div className='grout-color__user-selected-color-name title'>{`${userColors[0]?.colorNumber} ${userColors[0]?.name}`}</div>
+          <div className='grout-color__user-palitra-block' style={{ backgroundColor: `rgb(${randomColors[0]?.RGB})` }} />
+          <div className='grout-color__user-selected-color-name title'>{`${randomColors[0]?.colorNumber} ${randomColors[0]?.name}`}</div>
           <div className='grout-color__open-modal-window icon-button' onClick={openModalWindow}>
             <button className='grout-color__button-open-modal-window icon-button'>
               <i className='icon-open_modal icon'></i>
